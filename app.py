@@ -21,7 +21,7 @@ app = Flask(__name__)
 
 # Define the TextPreprocessor class
 class TextPreprocessor(BaseEstimator, TransformerMixin):
-    def _init_(self):
+    def __init__(self):
         self.wordnet_lemmatizer = WordNetLemmatizer()
         self.stopwords = set(nltk_stopwords.words('english'))
     
