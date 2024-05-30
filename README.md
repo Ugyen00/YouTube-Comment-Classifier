@@ -9,22 +9,22 @@ Users need to enter either their YouTube url or any comments in the input sectio
 <img width="716" alt="Screenshot 2024-05-30 at 4 55 54 PM" src="https://github.com/Ugyen00/YouTube-Comment-Classifier/assets/115082366/e5148155-7d47-4fa0-a0ab-850a2968f211">
 
 ### Libararies that need to be imported
-import pandas as pd
-import matplotlib.pyplot as plt
-import nltk
-from nltk import WordNetLemmatizer
-from nltk import pos_tag, word_tokenize
-from nltk.corpus import stopwords as nltk_stopwords
-from nltk.corpus import wordnet
-from sklearn.feature_extraction.text import TfidfVectorizer
-from sklearn.model_selection import train_test_split
-from sklearn.svm import SVC
-from sklearn.metrics import f1_score, confusion_matrix
-import re
+#### import pandas as pd
+#### import matplotlib.pyplot as plt
+#### import nltk
+#### from nltk import WordNetLemmatizer
+#### from nltk import pos_tag, word_tokenize
+#### from nltk.corpus import stopwords as nltk_stopwords
+#### from nltk.corpus import wordnet
+#### from sklearn.feature_extraction.text import TfidfVectorizer
+#### from sklearn.model_selection import train_test_split
+#### from sklearn.svm import SVC
+#### from sklearn.metrics import f1_score, confusion_matrix
+#### import re
 
 ### Downloaad NLTK resources
-nltk.download('punkt')
-nltk.download('omw-1.4')
-nltk.download('wordnet')
-nltk.download('stopwords')
-nltk.download('averaged_perceptron_tagger')
+#### nltk.download('punkt')
+#### nltk.download('omw-1.4')
+#### nltk.download('wordnet')
+#### nltk.download('stopwords')
+#### nltk.download('averaged_perceptron_tagger')
