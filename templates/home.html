@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>YouTube Comment Scraper and Toxicity CLassifier</title>
+    <title>YouTube Comment Toxicity Classifier</title>
     <link
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
@@ -61,6 +61,18 @@
         background-color: #e60000;
         border-color: #e60000;
       }
+      .btn-toggle {
+        background-color: #007bff;
+        border-color: #007bff;
+        font-weight: 500;
+        font-size: 14px;
+        padding: 6px 12px;
+        margin-bottom: 20px;
+      }
+      .btn-toggle:hover {
+        background-color: #0056b3;
+        border-color: #004085;
+      }
       .form-icon {
         font-size: 20px;
         color: #ff0000;
@@ -74,8 +86,11 @@
         <i class="form-icon fas fa-comments"></i>YouTube Comment Toxicity
         Classifier
       </h1>
-      <form method="get" action="/results" class="mt-4">
-        <div class="form-group">
+      <button id="toggleButton" type="button" class="btn btn-toggle">
+        Switch to Text Input
+      </button>
+      <form id="inputForm" method="get" action="/results" class="mt-4">
+        <div class="form-group" id="urlInput">
           <label for="url">YouTube Video URL</label>
           <input
             type="url"
@@ -83,8 +98,17 @@
             id="url"
             name="url"
             placeholder="Enter YouTube video URL"
-            required
           />
+        </div>
+        <div class="form-group" id="textInput" style="display: none">
+          <label for="text">Input Text</label>
+          <textarea
+            class="form-control"
+            id="text"
+            name="text"
+            placeholder="Enter text to classify"
+            rows="4"
+          ></textarea>
         </div>
         <button type="submit" class="btn btn-primary">
           Get Comments and Predict Toxicity
@@ -95,5 +119,30 @@
       src="https://kit.fontawesome.com/a076d05399.js"
       crossorigin="anonymous"
     ></script>
+    <script>
+      document
+        .getElementById("toggleButton")
+        .addEventListener("click", function () {
+          var urlInput = document.getElementById("urlInput");
+          var textInput = document.getElementById("textInput");
+          var toggleButton = document.getElementById("toggleButton");
+          var urlField = document.getElementById("url");
+          var textField = document.getElementById("text");
+
+          if (urlInput.style.display === "none") {
+            urlInput.style.display = "block";
+            textInput.style.display = "none";
+            toggleButton.textContent = "Switch to Text Input";
+            urlField.required = true;
+            textField.required = false;
+          } else {
+            urlInput.style.display = "none";
+            textInput.style.display = "block";
+            toggleButton.textContent = "Switch to URL Input";
+            urlField.required = false;
+            textField.required = true;
+          }
+        });
+    </script>
   </body>
 </html>

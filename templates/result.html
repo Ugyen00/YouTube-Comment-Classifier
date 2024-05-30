@@ -72,6 +72,17 @@
         justify-content: center;
         margin-top: 20px;
       }
+
+      /* Add custom color classes */
+      .positive {
+        color: green;
+      }
+      .negative {
+        color: red;
+      }
+      .neutral {
+        color: brown;
+      }
     </style>
   </head>
   <body>
@@ -83,6 +94,7 @@
           <tr>
             <th>Comment</th>
             <th>Toxicity Probabilities</th>
+            <th>Classification</th>
           </tr>
         </thead>
         <tbody>
@@ -92,9 +104,18 @@
             <td>
               <ul>
                 {% for toxicity_type, probability in toxicity_probs.items() %}
-                <li>{{ toxicity_type }}: {{ probability }}</li>
-                {% endfor %}
+                {% if toxicity_type != 'classification' and toxicity_type !=
+                'goodness' %}
+                <li>{{ toxicity_type.capitalize() }}: {{ probability }}</li>
+                {% endif %} {% endfor %}
+                <li>Goodness: {{ toxicity_probs['goodness'] }}</li>
               </ul>
+            </td>
+            <!-- Apply color classes based on classification -->
+            <td
+              class="{% if toxicity_probs['classification'] == 'Positive' %}positive{% elif toxicity_probs['classification'] == 'Negative' %}negative{% else %}neutral{% endif %}"
+            >
+              {{ toxicity_probs['classification'] }}
             </td>
           </tr>
           {% endfor %}
